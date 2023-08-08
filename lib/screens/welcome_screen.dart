@@ -3,6 +3,9 @@ import 'package:descope/descope.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/screens/home_screen.dart';
+import 'package:logging/logging.dart';
+
+final Logger _logger = Logger('welcome_screen');
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -43,7 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                   );
                 }).catchError((e) {
-                  print(e);
+                  _logger.severe('ERROR: $e');
                 });
               },
               child: const Text("Get started"),
