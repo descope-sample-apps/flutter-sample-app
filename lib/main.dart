@@ -1,8 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_sample_app/screens/home_screen.dart';
 import 'package:flutter_sample_app/screens/welcome_screen.dart';
+// import 'package:descope/descope.dart';
+import 'package:logging/logging.dart';
 
-void main() {
+final Logger _logger = Logger('main');
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "lib/.env");
+
+  final String? projectId = dotenv.env['DESCOPE_PROJECT_ID'];
+  if (projectId == null || projectId.isEmpty) {
+    _logger.severe('ERROR: DESCOPE_PROJECT_ID is not set');
+    return;
+  } else {
+    _logger.info('DESCOPE_PROJECT_ID: $projectId');
+  }
+
+  // Descope.projectId = projectId;
+
+  // await Descope.sessionManager.loadSession();
+
+  // final session = Descope.sessionManager.session;
+  // if (session != null) {
+  //   _logger.info('User is logged in: ${session.user}');
+  // }
+
   runApp(const MyApp());
 }
 
