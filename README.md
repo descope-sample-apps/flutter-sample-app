@@ -50,3 +50,6 @@ To learn more please see the [Descope Documentation and API reference page](http
 
 ## Contact Us
 If you need help you can [contact us](https://docs.descope.com/support/)
+
+## License
+The Flutter Sample App is licensed for use under the terms and conditions of the MIT license Agreement.
