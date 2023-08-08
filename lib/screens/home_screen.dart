@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Hi, $name',
+            Text('Hi, $name!',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 20),
