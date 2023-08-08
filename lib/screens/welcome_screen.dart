@@ -2,6 +2,7 @@
 import 'package:descope/descope.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_sample_app/screens/home_screen.dart';
 import 'package:logging/logging.dart';
 
@@ -31,9 +32,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             CupertinoButton(
               color: Theme.of(context).primaryColor,
               onPressed: () {
+                final flowUrl = dotenv.env['DESCOPE_FLOW_URL'];
+                if (flowUrl == null || flowUrl.isEmpty) {
+                  _logger.severe('ERROR: DESCOPE_FLOW_URL is not set');
+                  return;
+                }
                 Descope.flow
                     .start(
-                  'https://descope-flutter.vercel.app/login',
+                  flowUrl,
                   // deepLinkUrl: '<URL_FOR_APP_LINK_IN_SETUP_#2>'
                 )
                     .then((authResponse) {

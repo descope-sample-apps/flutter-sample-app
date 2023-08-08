@@ -16,8 +16,6 @@ Future<void> main() async {
   if (projectId == null || projectId.isEmpty) {
     _logger.severe('ERROR: DESCOPE_PROJECT_ID is not set');
     return;
-  } else {
-    _logger.info('DESCOPE_PROJECT_ID: $projectId');
   }
 
   Descope.projectId = projectId;
