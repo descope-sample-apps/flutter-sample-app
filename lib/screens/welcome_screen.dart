@@ -37,11 +37,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   _logger.severe('ERROR: DESCOPE_FLOW_URL is not set');
                   return;
                 }
+                final deepLinkUrl = dotenv.env['DESCOPE_DEEP_LINK_URL'];
+
                 Descope.flow
-                    .start(
-                  flowUrl,
-                  // deepLinkUrl: '<URL_FOR_APP_LINK_IN_SETUP_#2>'
-                )
+                    .start(flowUrl, deepLinkUrl: deepLinkUrl)
                     .then((authResponse) {
                   final session =
                       DescopeSession.fromAuthenticationResponse(authResponse);
