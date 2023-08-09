@@ -39,6 +39,8 @@ dependencies:
     git: https://github.com/descope/descope-flutter
   flutter_dotenv: ^5.1.0
   logging: ^1.2.0
+  go_router: ^10.0.0
+
 
 dev_dependencies:
   flutter_test:

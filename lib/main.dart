@@ -4,6 +4,7 @@ import 'package:flutter_sample_app/screens/home_screen.dart';
 import 'package:flutter_sample_app/screens/welcome_screen.dart';
 import 'package:descope/descope.dart';
 import 'package:logging/logging.dart';
+import 'router.dart';
 
 final Logger _logger = Logger('main');
 
@@ -30,15 +31,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: goRouter,
       title: 'Descope Flutter Sample App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: Descope.sessionManager.session?.refreshToken.isExpired == false
-          ? const HomeScreen()
-          : const WelcomeScreen(),
     );
   }
 }
