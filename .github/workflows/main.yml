@@ -13,6 +13,14 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Create .env file and add variables
+        env:
+            DESCOPE_PROJECT_ID: ${{ vars.DESCOPE_PROJECT_ID }}
+            DESCOPE_FLOW_URL: ${{ vars.DESCOPE_FLOW_URL }}
+        run: |
+            echo "DESCOPE_PROJECT_ID=$(DESCOPE_PROJECT_ID)" > .env
+            echo "DESCOPE_FLOW_URL=$(DESCOPE_FLOW_URL)" >> .env
+  
       - name: Dependencies
         run: flutter pub get
       - name: Analyze
