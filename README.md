@@ -26,7 +26,7 @@ Make sure you have the following installed:
 2. **Open the Project**: Open the project within VS Code or your IDE of choice.
 3. **Define and Host Your Flow**: Your authentication flow needs to be set up externally per the instructions [here](https://github.com/descope/descope-flutter/tree/main#running-flows). You'll use the url where you hosted the flow in the next step
 
-6. **Add Environment Variables**: Within the `lib` folder in the root directory, create a `.env` file.
+4. **Add Environment Variables**: Within the `lib` folder in the root directory, create a `.env` file.
 ```
 DESCOPE_PROJECT_ID=<your_descope_project_id>
 DESCOPE_FLOW_URL=<your_descope_flow_url>
@@ -35,7 +35,7 @@ _For the `DESCOPE_PROJECT_ID`, you can look in your [Descope Console](https://ap
 
 _For the `DESCOPE_FLOW_URL`, you'll need the url where you hosted your authentication flow as described above in Step #3._
 
-7. **_(Android Only)_ Add deep link and host urls:** Follow the steps [here](https://github.com/descope/descope-flutter/tree/main#android-only-setup-2-enable-app-links) to get your deep link and host urls. Then, add the former to the `.env` and latter to the `AndroidManifest.xml`:
+5. **_(Android Only)_ Add deep link and host urls:** Follow the steps [here](https://github.com/descope/descope-flutter/tree/main#android-only-setup-2-enable-app-links) to get your deep link and host urls. Then, add the former to the `.env` and latter to the `AndroidManifest.xml`:
 ```
 // lib/.env
 
@@ -46,11 +46,11 @@ DESCOPE_DEEP_LINK_URL=<your_descope_deep_link_url>
 
 <data android:scheme="https" android:host="<YOUR_HOST_HERE>" android:path="/auth" />
 ```
-4. **Navigate to Project Directory**: Change your current directory to the project's root directory.
+6. **Navigate to Project Directory**: Change your current directory to the project's root directory.
 ```
 cd flutter-sample-app/
 ```
-5. **Install Dependencies and Run the Application**: Retrieve all the required packages and start the application using the following commands:
+7. **Install Dependencies and Run the Application**: Retrieve all the required packages and start the application using the following commands:
 ```
 flutter pub get
 flutter run
