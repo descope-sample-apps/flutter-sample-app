@@ -44,16 +44,11 @@ DESCOPE_DEEP_LINK_URL=<your_descope_deep_link_url> // For Android only
 ```
 cd flutter-sample-app/
 ```
-5. **Install Dependencies**: Retrieve all the required packages.
+5. **Install Dependencies and Run the Application**: Retrieve all the required packages and start the application using the following commands:
 ```
 flutter pub get
-```
-6. **Run the Application**: Start the application using the following command:
-
-```
 flutter run
 ```
-
 
 ## Learn More
 To learn more please see the [Descope Documentation and API reference page](https://docs.descope.com/).
