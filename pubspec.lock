@@ -68,12 +68,11 @@ packages:
   descope:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "9c051e663784f74b411da0574d2fd392722e73f4"
-      url: "https://github.com/descope/descope-flutter"
-    source: git
-    version: "0.5.1"
+      name: descope
+      sha256: d29dea558195742bd1c36d4593486be9d7ae3a40d2dcaf5d324bd9664c41bc1c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.0"
   fake_async:
     dependency: transitive
     description:
