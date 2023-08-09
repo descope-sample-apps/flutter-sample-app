@@ -26,7 +26,7 @@ Make sure you have the following installed:
 2. **Open the Project**: Open the project within VS Code or your IDE of choice.
 3. **Define and Host Your Flow**: Your authentication flow needs to be set up externally per the instructions [here](https://github.com/descope/descope-flutter/tree/main#running-flows). You'll use the url where you hosted the flow in the next step
 
-4. **Add Environment Variables**: Within the `lib` folder in the root directory, create a `.env` file.
+4. **Add Environment Variables**: Within the root directory of the project, create a `.env` file.
 ```
 DESCOPE_PROJECT_ID=<your_descope_project_id>
 DESCOPE_FLOW_URL=<your_descope_flow_url>
