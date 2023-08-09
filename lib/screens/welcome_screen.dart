@@ -1,12 +1,7 @@
-// import 'package:descope/descope.dart';
-import 'package:descope/descope.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_sample_app/screens/home_screen.dart';
-import 'package:logging/logging.dart';
-
-final Logger _logger = Logger('welcome_screen');
+import 'package:flutter_sample_app/services/util.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -16,6 +11,31 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  final AuthService authService = AuthService();
+
+  bool isLoading = false;
+
+  Future<void> _startFlow() async {
+    setState(() {
+      isLoading = true;
+    });
+    final bool flowSucceeded = await authService.startFlow();
+
+    if (!mounted) return;
+
+    setState(() {
+      isLoading = false;
+    });
+
+    if (!flowSucceeded) return;
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const HomeScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,30 +51,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             const SizedBox(height: 20),
             CupertinoButton(
               color: Theme.of(context).primaryColor,
-              onPressed: () {
-                final flowUrl = dotenv.env['DESCOPE_FLOW_URL'];
-                if (flowUrl == null || flowUrl.isEmpty) {
-                  _logger.severe('ERROR: DESCOPE_FLOW_URL is not set');
-                  return;
-                }
-                final deepLinkUrl = dotenv.env['DESCOPE_DEEP_LINK_URL'];
-
-                Descope.flow
-                    .start(flowUrl, deepLinkUrl: deepLinkUrl)
-                    .then((authResponse) {
-                  final session =
-                      DescopeSession.fromAuthenticationResponse(authResponse);
-                  Descope.sessionManager.manageSession(session);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ),
-                  );
-                }).catchError((e) {
-                  _logger.severe('ERROR: $e');
-                });
-              },
-              child: const Text("Get started"),
+              onPressed: isLoading ? null : _startFlow,
+              child: isLoading
+                  ? const CircularProgressIndicator()
+                  : const Text("Get started"),
             )
           ],
         ),

@@ -14,7 +14,7 @@ final goRouter = GoRouter(
       routes: [
         GoRoute(
           path:
-              'auth', // This path needs to correspond to the deep link you configured in your manifest - see below
+              'auth', // This path needs to correspond to the deep link you configured in your manifest
           redirect: (context, state) async {
             try {
               Descope.flow

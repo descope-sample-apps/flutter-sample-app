@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_sample_app/screens/home_screen.dart';
-import 'package:flutter_sample_app/screens/welcome_screen.dart';
 import 'package:descope/descope.dart';
 import 'package:logging/logging.dart';
 import 'router.dart';

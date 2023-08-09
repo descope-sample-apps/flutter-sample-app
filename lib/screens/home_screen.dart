@@ -12,39 +12,59 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final AuthService authService = AuthService();
+
+  bool isLoading = false;
+
   DescopeUser? user = Descope.sessionManager.session?.user;
 
-  String get userId => user?.userId ?? '...';
-  String get name => user?.name ?? '...';
-  String get email => user?.email ?? '...';
-  String get phone => user?.phone ?? '...';
-  Uri? get picture => user?.picture;
-  int? get createdAt => user?.createdAt;
-  bool get isVerifiedEmail => user?.isVerifiedEmail ?? false;
-  bool get isVerifiedPhone => user?.isVerifiedPhone ?? false;
-  List<String> get loginIds => user?.loginIds ?? [];
+  Future<void> _logout() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    await authService.logout();
+
+    if (!mounted) return;
+
+    setState(() {
+      isLoading = false;
+    });
+
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const WelcomeScreen(),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (user == null) {
+      return const Scaffold(
+        body: Center(
+          child: Text('No user data available'),
+        ),
+      );
+    }
+    DescopeUser userInfo = user!;
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Hi, $name!',
+            Text('Hi, ${userInfo.name}!',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge),
+                style: Theme.of(context).textTheme.titleLarge),
+            Text('Email: ${userInfo.email}'),
+            Text('Phone: ${userInfo.phone}'),
             const SizedBox(height: 20),
             CupertinoButton(
-                color: Theme.of(context).primaryColorDark,
-                child: const Text("Log out"),
-                onPressed: () {
-                  logout().then((value) => {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const WelcomeScreen(),
-                        ))
-                      });
-                })
+              color: Theme.of(context).primaryColorDark,
+              onPressed: isLoading ? null : _logout,
+              child: isLoading
+                  ? const CircularProgressIndicator()
+                  : const Text("Log out"),
+            )
           ],
         ),
       ),
