@@ -23,6 +23,18 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <!-- add the following at the end of the activity tag, after anything you have defined currently -->
+
+            <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
+            <intent-filter android:autoVerify="true"> <!-- autoVerify required for app links -->
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- replace with your host, the path can change must must be reflected when running the flow -->
+                <!-- the path should correspond with the routing path defined above -->
+                <data android:scheme="https" android:host="<YOUR_HOST_HERE>" android:path="/auth" />
+            </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
