@@ -24,12 +24,22 @@ Make sure you have the following installed:
 
 
 2. **Open the Project**: Open the project within VS Code or your IDE of choice.
-3. **Add Environment Variables**: Within the lib folder in the root directory, create a .env file with the following content:
+3. **Define and Host Your Flow**: Your authentication flow needs to be set up externally per the instructions [here](https://github.com/descope/descope-flutter/tree/main#running-flows).
 
+6. **Add Environment Variables**: Within the `lib` folder in the root directory, create a .env file with the following content:
 ```
 DESCOPE_PROJECT_ID=<your_descope_project_id>
 DESCOPE_FLOW_URL=<your_descope_flow_url>
 ```
+*(Android Only)* You'll need to add the deep link url to the `.env`:
+```
+DESCOPE_DEEP_LINK_URL=<your_descope_deep_link_url> // For Android only
+```
+*(Android Only)* And host url in the `android/app/src/main/AndroidManifest.xml`:
+```
+<data android:scheme="https" android:host="<YOUR_HOST_HERE>" android:path="/auth" />
+```
+
 4. **Navigate to Project Directory**: Change your current directory to the project's root directory.
 ```
 cd flutter-sample-app/
