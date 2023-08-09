@@ -11,15 +11,13 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  final AuthService authService = AuthService();
-
   bool isLoading = false;
 
   Future<void> _startFlow() async {
     setState(() {
       isLoading = true;
     });
-    final bool flowSucceeded = await authService.startFlow();
+    final bool flowSucceeded = await startFlow();
 
     if (!mounted) return;
 

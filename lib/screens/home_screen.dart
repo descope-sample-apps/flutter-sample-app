@@ -12,8 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final AuthService authService = AuthService();
-
   bool isLoading = false;
 
   DescopeUser? user = Descope.sessionManager.session?.user;
@@ -23,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       isLoading = true;
     });
 
-    await authService.logout();
+    await logout();
 
     if (!mounted) return;
 
