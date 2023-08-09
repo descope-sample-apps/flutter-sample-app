@@ -41,7 +41,7 @@ _For the `DESCOPE_FLOW_URL`, you'll need the url where you hosted your authentic
 
 DESCOPE_DEEP_LINK_URL=<your_descope_deep_link_url>
 ```
-```
+```xml
 // android/app/src/main/AndroidManifest.xml
 
 <data android:scheme="https" android:host="<YOUR_HOST_HERE>" android:path="/auth" />
