@@ -1,4 +1,4 @@
-# Descope's Flutter Sample App
+# Descope's Flutter Sample App [![CI](https://github.com/descope-sample-apps/flutter-sample-app/actions/workflows/main.yml/badge.svg)](https://github.com/descope-sample-apps/flutter-sample-app/actions/workflows/main.yml)
 
 Welcome to Descope's Flutter Sample App, a demonstration of how to integrate Descope for user authentication within a Flutter application. By exploring this project, you can understand how Descope works with Flutter to manage different authentication flows.
 
