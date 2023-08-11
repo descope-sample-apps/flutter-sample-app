@@ -13,7 +13,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Create .env file and add variables
+      - name: Create '.env' file and add environment variables
         env:
             DESCOPE_PROJECT_ID: ${{ vars.DESCOPE_PROJECT_ID }}
             DESCOPE_FLOW_URL: ${{ vars.DESCOPE_FLOW_URL }}
