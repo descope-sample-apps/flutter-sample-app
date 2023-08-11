@@ -8,7 +8,7 @@ final Logger _logger = Logger('main');
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: "lib/.env");
+  await dotenv.load(fileName: ".env");
 
   final String? projectId = dotenv.env['DESCOPE_PROJECT_ID'];
 
