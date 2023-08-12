@@ -21,23 +21,19 @@ Make sure you have the following installed:
 
 ###  Run the app
 1. **Clone the Repository**: Clone this repository to your local machine.
-
-
 2. **Open the Project**: Open the project within VS Code or your IDE of choice.
-3. **Define and Host Your Flow**: Your authentication flow needs to be set up externally per the instructions [here](https://github.com/descope/descope-flutter/tree/main#running-flows). You'll use the url where you hosted the flow in the next step
-
-4. **Add Environment Variables**: Within the root directory of the project, create a `.env` file.
+3. **Add your Descope Project ID**: Within the root directory of the project, create a `.env` file. Add your Descope Project ID, which can be found in your [Descope Console](https://app.descope.com/settings/project).
 ```
 DESCOPE_PROJECT_ID=<your_descope_project_id>
+```
+4. **(Optional) Self-Host Your Flow**: Your Descope authentication flow is automatically hosted by Descope at https://auth.descope.io/<your_descope_project_id> but you can use your own domain as host per the instructions [in our docs](https://github.com/descope/descope-flutter/tree/main#running-flows). You can use your self-hosted flow url by setting this environment variable in the `.env`:
+```
 DESCOPE_FLOW_URL=<your_descope_flow_url>
 ```
-_For the `DESCOPE_PROJECT_ID`, you can look in your [Descope Console](https://app.descope.com/settings/project)._
-
-_For the `DESCOPE_FLOW_URL`, you'll need the url where you hosted your authentication flow as described above in Step #3._
 
 5. **_(Android Only)_ Add deep link and host urls:** Follow the steps [here](https://github.com/descope/descope-flutter/tree/main#android-only-setup-2-enable-app-links) to get your deep link and host urls. Then, add the former to the `.env` and latter to the `AndroidManifest.xml`:
 ```
-// lib/.env
+// .env
 
 DESCOPE_DEEP_LINK_URL=<your_descope_deep_link_url>
 ```
