@@ -5,10 +5,11 @@ import 'package:logging/logging.dart';
 final Logger _logger = Logger('auth_service');
 
 Future<bool> startFlow() async {
-  final flowUrl = dotenv.env['DESCOPE_FLOW_URL'];
+  final String projectId = dotenv.env['DESCOPE_PROJECT_ID']!;
+
+  String? flowUrl = dotenv.env['DESCOPE_FLOW_URL'];
   if (flowUrl == null || flowUrl.isEmpty) {
-    _logger.severe('ERROR: DESCOPE_FLOW_URL is not set');
-    return false;
+    flowUrl = 'https://auth.descope.io/$projectId';
   }
   final deepLinkUrl = dotenv.env['DESCOPE_DEEP_LINK_URL'];
 
