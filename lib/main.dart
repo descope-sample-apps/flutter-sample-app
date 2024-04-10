@@ -17,7 +17,7 @@ Future<void> main() async {
     return;
   }
 
-  Descope.projectId = projectId;
+  Descope.setup(projectId);
 
   await Descope.sessionManager.loadSession();
 

@@ -69,10 +69,10 @@ packages:
     dependency: "direct main"
     description:
       name: descope
-      sha256: "30054484c587d6b89e730c39acc41720202ff8a28024164e4506916082d5cc37"
+      sha256: "67da3e22c5b79e2ca93d876c12c2357afcc408f733343d18f443d5ea7fbc5101"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.0"
+    version: "0.9.0"
   fake_async:
     dependency: transitive
     description:

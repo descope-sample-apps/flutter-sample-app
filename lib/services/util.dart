@@ -14,8 +14,27 @@ Future<bool> startFlow() async {
   final deepLinkUrl = dotenv.env['DESCOPE_DEEP_LINK_URL'];
 
   try {
-    final authResponse =
-        await Descope.flow.start(flowUrl, deepLinkUrl: deepLinkUrl);
+    final options = DescopeFlowOptions(
+        mobile: DescopeMobileFlowOptions(
+            flowUrl: flowUrl, deepLinkUrl: deepLinkUrl),
+        web: DescopeWebFlowOptions(
+          flowId: 'sign-up-or-in',
+          flowContainerCss: {
+            "background-color": "antiquewhite",
+            "width": "500px",
+            "min-height": "300px",
+            "margin": "auto",
+            "position": "relative",
+            "top": "50%",
+            "transform": "translateY(-50%)",
+            "display": "flex",
+            "flex-direction": "column",
+            "align-items": "center",
+            "justify-content": "center",
+            "box-shadow": "0px 0px 10px gray",
+          },
+        ));
+    final authResponse = await Descope.flow.start(options);
     final session = DescopeSession.fromAuthenticationResponse(authResponse);
     Descope.sessionManager.manageSession(session);
     return true;
